@@ -1,10 +1,10 @@
 package edu.phystech.lab;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UserAuthorization {
-    private static Map<String, String> users = new HashMap<String, String>();
+    private static Map<String, String> users = new ConcurrentHashMap<String, String>();
 
     public static void addUser(String username, String password) {
         users.put(username, password);
