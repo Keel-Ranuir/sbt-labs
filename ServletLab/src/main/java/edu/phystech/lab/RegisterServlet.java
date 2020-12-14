@@ -23,8 +23,6 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter write = resp.getWriter();
 
-        ServletContext servletContext = getServletConfig().getServletContext();
-
         String user = req.getParameter("userName");
         String pass = req.getParameter("userPass");
 
