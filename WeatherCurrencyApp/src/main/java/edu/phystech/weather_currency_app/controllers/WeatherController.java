@@ -1,6 +1,7 @@
 package edu.phystech.weather_currency_app.controllers;
 
 import edu.phystech.weather_currency_app.services.WeatherService;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class WeatherController {
     }
 
     @GetMapping("/weather")
-    public List<Double> getWeather(@RequestParam String days, @RequestParam String city) {
+    public List<Double> getWeather(@RequestParam @Nullable String days, @RequestParam @Nullable String city) {
         int daysNum = days == null ? 1 : Integer.parseInt(days);
         if (city == null) {
             return weatherService.getWeatherHistory(daysNum);

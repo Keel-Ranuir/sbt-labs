@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class WeatherService {
     private static final String API_KEY = "64ee59d7904f4bbb8f3195525201812";
-    private static final String DEFAUKT_CITY = "Moscow";
+    private static final String DEFAULT_CITY = "Moscow";
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 
@@ -26,7 +26,7 @@ public class WeatherService {
     }
 
     public List<Double> getWeatherHistory(int days) {
-        return getHistory(days, DEFAUKT_CITY);
+        return getHistory(days, DEFAULT_CITY);
     }
 
     public List<Double> getWeatherHistory(int days, String city) {
@@ -34,7 +34,7 @@ public class WeatherService {
     }
 
     public Double getWeatherForecast() {
-        return getForecast(DEFAUKT_CITY);
+        return getForecast(DEFAULT_CITY);
     }
 
     public Double getWeatherForecast(String city) {
