@@ -10,7 +10,7 @@ public class PredictService {
     private final SimpleRegression regression;
     private final WeatherService weatherService;
     private final CurrencyService currencyService;
-    private final int datasetSize = 7;
+    private final static int DATASET_SIZE = 7;
 
     public PredictService(WeatherService weatherService, CurrencyService currencyService)  {
         this.weatherService = weatherService;
@@ -25,10 +25,10 @@ public class PredictService {
     }
 
     private void fit() {
-        List<Double> weatherData = weatherService.getWeatherHistory(datasetSize);
-        List<Double> currencyData = currencyService.getDollarCurrency(datasetSize);
+        List<Double> weatherData = weatherService.getWeatherHistory(DATASET_SIZE);
+        List<Double> currencyData = currencyService.getDollarCurrency(DATASET_SIZE);
 
-        for (int i = 0; i < datasetSize; ++i) {
+        for (int i = 0; i < DATASET_SIZE; ++i) {
             regression.addData(weatherData.get(i), currencyData.get(i));
         }
     }

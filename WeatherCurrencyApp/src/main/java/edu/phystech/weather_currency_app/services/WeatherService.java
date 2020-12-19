@@ -15,8 +15,8 @@ import java.util.List;
 
 @Service
 public class WeatherService {
-    private static final String apiKey = "64ee59d7904f4bbb8f3195525201812";
-    private static final String defaultCity = "Moscow";
+    private static final String API_KEY = "64ee59d7904f4bbb8f3195525201812";
+    private static final String DEFAUKT_CITY = "Moscow";
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 
@@ -26,7 +26,7 @@ public class WeatherService {
     }
 
     public List<Double> getWeatherHistory(int days) {
-        return getHistory(days, defaultCity);
+        return getHistory(days, DEFAUKT_CITY);
     }
 
     public List<Double> getWeatherHistory(int days, String city) {
@@ -34,7 +34,7 @@ public class WeatherService {
     }
 
     public Double getWeatherForecast() {
-        return getForecast(defaultCity);
+        return getForecast(DEFAUKT_CITY);
     }
 
     public Double getWeatherForecast(String city) {
@@ -70,10 +70,10 @@ public class WeatherService {
     }
 
     private String createHistoryRequestUrl(String date, String city) {
-        return "http://api.weatherapi.com/v1/history.json" + "?key=" + apiKey + "&q=" + city + "&dt=" + date;
+        return "http://api.weatherapi.com/v1/history.json" + "?key=" + API_KEY + "&q=" + city + "&dt=" + date;
     }
 
     private String createForecastRequestUrl(String city) {
-        return "http://api.weatherapi.com/v1/forecast.json" + "?key=" + apiKey + "&q=" + city + "&days=1";
+        return "http://api.weatherapi.com/v1/forecast.json" + "?key=" + API_KEY + "&q=" + city + "&days=1";
     }
 }
